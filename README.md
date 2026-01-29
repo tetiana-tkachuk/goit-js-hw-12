@@ -1,1 +1,1 @@
-# 🪄ImageSearch
+# 🪄ImageSearch with pagination
