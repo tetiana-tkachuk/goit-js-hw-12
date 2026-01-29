@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🪄ImageSearch</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form class="form">
+        <label>
+          <input
+            class="form-input"
+            type="text"
+            name="searchText"
+            placeholder="Search images..."
+          />
+        </label>
+        <button class="form-btn" type="submit">Search</button>
+      </form>
+      <ul class="gallery"></ul>
+      <div class="loader-wrapper">
+        <span class="loader"></span>
+      </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
