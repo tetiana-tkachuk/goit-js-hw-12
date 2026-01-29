@@ -90,7 +90,15 @@ async function handlePagination() {
     renderFunctions.createGallery(data.hits);
     renderFunctions.hideLoader();
     curentTotalHits -= data.hits.length;
+
+    const cardEl = document.querySelector('.gallery-item');
+    const cardHeight = cardEl.getBoundingClientRect().height;
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: 'smooth',
+    });
   } catch (error) {
+    renderFunctions.hideLoader();
     iziToast.error({
       position: 'topRight',
       message: 'Sorry, something went wrong...Try later',
@@ -99,7 +107,6 @@ async function handlePagination() {
       backgroundColor: 'yellow',
       closeOnClick: true,
     });
-    renderFunctions.hideLoader();
   }
 
   if (curentTotalHits < 1) {
