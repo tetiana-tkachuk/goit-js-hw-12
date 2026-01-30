@@ -55,6 +55,7 @@ async function handleImageSearch(e) {
         closeOnClick: true,
       });
       renderFunctions.hideLoader();
+      formEl.reset();
       return;
     }
 
@@ -73,14 +74,25 @@ async function handleImageSearch(e) {
     renderFunctions.hideLoader();
   }
 
-  if (curentTotalHits > 1) {
-    renderFunctions.showLoadMoreButton();
-  }
-
   formEl.reset();
+
+  if (curentTotalHits < 1) {
+    iziToast.info({
+      position: 'bottomRight',
+      timeout: 7000,
+      message: "We're sorry, but you've reached the end of search results.",
+      messageColor: 'black',
+      messageSize: '18',
+      backgroundColor: 'yellow',
+      closeOnClick: true,
+    });
+    return;
+  }
+  renderFunctions.showLoadMoreButton();
 }
 
 async function handlePagination() {
+  renderFunctions.hideLoadMoreButton();
   renderFunctions.showLoader();
   currentPage += 1;
 
@@ -122,4 +134,5 @@ async function handlePagination() {
     });
     return;
   }
+  renderFunctions.showLoadMoreButton();
 }
